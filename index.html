@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seesaw Simulation</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <h1 class="app__title">Seesaw Simulation</h1>
+      </header>
+
+      <section class="stats" aria-label="Seesaw weights">
+        <div class="stats__item">
+          <span class="stats__label">Left Total</span>
+          <strong id="leftWeight">0 kg</strong>
+        </div>
+        <div class="stats__item">
+          <span class="stats__label">Angle</span>
+          <strong id="angleValue">0°</strong>
+        </div>
+        <div class="stats__item">
+          <span class="stats__label">Right Total</span>
+          <strong id="rightWeight">0 kg</strong>
+        </div>
+      </section>
+
+      <section class="scene">
+        <div class="seesaw-area">
+          <div class="pivot" aria-hidden="true"></div>
+
+          <div
+            id="plank"
+            class="plank"
+            role="button"
+            aria-label="Seesaw plank"
+            tabindex="0"
+          >
+            <div id="objectsLayer" class="objects-layer"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="controls">
+        <button id="resetButton" type="button">Reset</button>
+      </section>
+    </main>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>

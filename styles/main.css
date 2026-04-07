@@ -1,0 +1,141 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f5f7fb;
+  --panel: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --plank: #8b5e3c;
+  --pivot: #ef4444;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --radius: 16px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.app__header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.app__title {
+  margin: 0 0 8px;
+  font-size: 2rem;
+}
+
+.app__subtitle {
+  margin: 0;
+  color: var(--muted);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stats__item {
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.stats__label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.scene {
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 40px 20px 60px;
+}
+
+.seesaw-area {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plank {
+  position: relative;
+  width: 400px;
+  height: 14px;
+  background: var(--plank);
+  border-radius: 999px;
+  cursor: pointer;
+  transform-origin: center center;
+  transition: transform 300ms ease;
+}
+
+.objects-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.pivot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translate(-50%, 18px);
+  border-left: 26px solid transparent;
+  border-right: 26px solid transparent;
+  border-top: 70px solid var(--pivot);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.controls button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #111827;
+  color: white;
+}
+
+.controls button:hover {
+  opacity: 0.92;
+}
+
+@media (max-width: 640px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .plank {
+    width: 300px;
+  }
+}
