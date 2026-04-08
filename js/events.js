@@ -1,11 +1,33 @@
-import { addObject } from "./state.js";
+import { addObject, state } from "./state.js";
 import { generateId, getRandomWeight } from "./utils.js";
 import { CONFIG } from "./config.js";
 
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
+
+function getLocalClickPosition(event, plankElement) {
+  const rect = plankElement.getBoundingClientRect();
+
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  const dx = event.clientX - centerX;
+  const dy = event.clientY - centerY;
+
+  const angleInRadians = (-state.angle * Math.PI) / 180;
+
+  const localXFromCenter =
+    dx * Math.cos(angleInRadians) - dy * Math.sin(angleInRadians);
+
+  const localX = localXFromCenter + CONFIG.plankWidth / 2;
+
+  return clamp(localX, 0, CONFIG.plankWidth);
+}
+
 export function bindPlankClick(plankElement, onUpdate) {
   plankElement.addEventListener("click", (event) => {
-    const rect = plankElement.getBoundingClientRect();
-    const clickX = event.clientX - rect.left;
+    const clickX = getLocalClickPosition(event, plankElement);
 
     const newObject = {
       id: generateId(),
