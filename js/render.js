@@ -2,17 +2,12 @@ export function renderObjects(objects, container) {
   container.innerHTML = "";
 
   objects.forEach((obj) => {
-    const el = document.createElement("div");
+    const element = document.createElement("div");
 
-    el.style.position = "absolute";
-    el.style.left = `${obj.position}px`;
-    el.style.top = "-10px";
-    el.style.width = "20px";
-    el.style.height = "20px";
-    el.style.background = "blue";
-    el.style.borderRadius = "50%";
+    element.className = "seesaw-object";
+    element.style.left = `${obj.position}px`;
 
-    container.appendChild(el);
+    container.appendChild(element);
   });
 }
 
