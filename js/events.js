@@ -1,21 +1,19 @@
 import { addObject } from "./state.js";
-import { getRandomWeight, generateId } from "./utils.js";
+import { generateId, getRandomWeight } from "./utils.js";
+import { CONFIG } from "./config.js";
 
-export function bindPlankClick(plankElement) {
+export function bindPlankClick(plankElement, onUpdate) {
   plankElement.addEventListener("click", (event) => {
     const rect = plankElement.getBoundingClientRect();
     const clickX = event.clientX - rect.left;
 
-    const weight = getRandomWeight(1, 10);
-
     const newObject = {
       id: generateId(),
-      weight,
+      weight: getRandomWeight(CONFIG.minWeight, CONFIG.maxWeight),
       position: clickX,
     };
 
     addObject(newObject);
-
-    console.log("New object:", newObject);
+    onUpdate();
   });
 }
