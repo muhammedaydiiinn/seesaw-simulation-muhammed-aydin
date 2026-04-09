@@ -1,6 +1,7 @@
 import { addObject, state } from "./state.js";
 import { generateId, getRandomWeight } from "./utils.js";
 import { CONFIG } from "./config.js";
+import { playDropSound } from "./sound.js";
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -38,6 +39,7 @@ export function bindPlankClick(plankElement, onUpdate) {
     };
 
     addObject(newObject);
+    playDropSound();
     onUpdate();
   });
 }

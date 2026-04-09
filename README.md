@@ -20,6 +20,7 @@ The seesaw recalculates its balance after each interaction and tilts according t
 - Pause/Resume button
 - Weight indicator on each object (scaled by weight)
 - Distance scale with tick marks on the plank
+- Drop sound effect (Web Audio API, no external files)
 - Responsive layout
 
 ## Physics Logic
@@ -44,6 +45,7 @@ The project is split into small modules:
 - `events.js`: handles click interaction
 - `render.js`: updates the DOM
 - `storage.js`: persists and restores data
+- `sound.js`: drop sound effect via Web Audio API
 - `utils.js`: helper functions
 
 ## Thought Process and Design Decisions
@@ -61,6 +63,10 @@ I used DOM-based rendering because canvas and external libraries were not allowe
 ## AI Usage
 AI was used only in a limited helper role for discussing structure, reviewing ideas, and debugging.  
 The main implementation, logic, code organization, and final code were written manually.
+
+Specific areas where AI assisted:
+- Generating the drop sound effect using the Web Audio API (`sound.js`)
+- Reviewing the distance scale implementation on the plank
 
 ## How to Run
 1. Clone the repository
