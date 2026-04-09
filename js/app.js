@@ -14,6 +14,7 @@ const leftWeightElement = document.getElementById("leftWeight");
 const rightWeightElement = document.getElementById("rightWeight");
 const angleValueElement = document.getElementById("angleValue");
 const resetButtonElement = document.getElementById("resetButton");
+const pauseButtonElement = document.getElementById("pauseButton");
 
 export function renderAll() {
   renderObjects(state.objects, objectsLayerElement);
@@ -29,6 +30,12 @@ export function renderAll() {
 function handleStateChange() {
   renderAll();
   saveState(getSerializableState());
+}
+
+function handlePause() {
+  state.paused = !state.paused;
+  pauseButtonElement.textContent = state.paused ? "Resume" : "Pause";
+  plankElement.style.cursor = state.paused ? "not-allowed" : "pointer";
 }
 
 function handleReset() {
@@ -52,6 +59,7 @@ function initApp() {
   renderAll();
 
   bindPlankClick(plankElement, handleStateChange);
+  pauseButtonElement.addEventListener("click", handlePause);
   resetButtonElement.addEventListener("click", handleReset);
 }
 

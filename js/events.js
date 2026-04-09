@@ -27,6 +27,8 @@ function getLocalClickPosition(event, plankElement, currentAngle) {
 
 export function bindPlankClick(plankElement, onUpdate) {
   plankElement.addEventListener("click", (event) => {
+    if (state.paused) return;
+
     const clickX = getLocalClickPosition(event, plankElement, state.angle);
 
     const newObject = {

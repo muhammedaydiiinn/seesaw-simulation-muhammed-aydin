@@ -5,6 +5,7 @@ export const state = {
   angle: 0,
   leftWeight: 0,
   rightWeight: 0,
+  paused: false,
 };
 
 export function addObject(object) {
