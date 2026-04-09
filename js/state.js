@@ -20,8 +20,14 @@ export function resetState() {
 }
 
 export function setState(newState) {
-  state.objects = newState.objects || [];
+  state.objects = newState?.objects || [];
   syncDerivedState();
+}
+
+export function getSerializableState() {
+  return {
+    objects: state.objects,
+  };
 }
 
 export function syncDerivedState() {
