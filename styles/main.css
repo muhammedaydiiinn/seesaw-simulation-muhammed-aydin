@@ -153,5 +153,9 @@ body {
   justify-content: center;
   color: white;
   font-size: 10px;
-  font-weight: bold;
+  font-weight: 700;
+}
+
+.objects-layer {
+  pointer-events: none;
 }

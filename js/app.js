@@ -1,6 +1,12 @@
-import { state } from "./state.js";
+import {
+  state,
+  resetState,
+  setState,
+  getSerializableState,
+} from "./state.js";
 import { bindPlankClick } from "./events.js";
 import { renderObjects, renderRotation, renderStats } from "./render.js";
+import { saveState, loadState, clearSavedState } from "./storage.js";
 
 const plankElement = document.getElementById("plank");
 const objectsLayerElement = document.getElementById("objectsLayer");
@@ -20,20 +26,33 @@ export function renderAll() {
   );
 }
 
-function initApp() {
-  console.log("Seesaw app initialized");
-
-  console.log({
-    plankElement,
-    objectsLayerElement,
-    leftWeightElement,
-    rightWeightElement,
-    angleValueElement,
-    resetButtonElement,
-  });
-
-  bindPlankClick(plankElement, renderAll);
+function handleStateChange() {
   renderAll();
+  saveState(getSerializableState());
+}
+
+function handleReset() {
+  resetState();
+  clearSavedState();
+  renderAll();
+}
+
+function restoreState() {
+  const savedState = loadState();
+
+  if (!savedState) {
+    return;
+  }
+
+  setState(savedState);
+}
+
+function initApp() {
+  restoreState();
+  renderAll();
+
+  bindPlankClick(plankElement, handleStateChange);
+  resetButtonElement.addEventListener("click", handleReset);
 }
 
 initApp();

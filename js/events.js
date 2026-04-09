@@ -6,7 +6,7 @@ function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
 
-function getLocalClickPosition(event, plankElement) {
+function getLocalClickPosition(event, plankElement, currentAngle) {
   const rect = plankElement.getBoundingClientRect();
 
   const centerX = rect.left + rect.width / 2;
@@ -15,7 +15,7 @@ function getLocalClickPosition(event, plankElement) {
   const dx = event.clientX - centerX;
   const dy = event.clientY - centerY;
 
-  const angleInRadians = (-state.angle * Math.PI) / 180;
+  const angleInRadians = (-currentAngle * Math.PI) / 180;
 
   const localXFromCenter =
     dx * Math.cos(angleInRadians) - dy * Math.sin(angleInRadians);
@@ -27,7 +27,7 @@ function getLocalClickPosition(event, plankElement) {
 
 export function bindPlankClick(plankElement, onUpdate) {
   plankElement.addEventListener("click", (event) => {
-    const clickX = getLocalClickPosition(event, plankElement);
+    const clickX = getLocalClickPosition(event, plankElement, state.angle);
 
     const newObject = {
       id: generateId(),
