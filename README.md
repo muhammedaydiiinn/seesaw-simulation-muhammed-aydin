@@ -3,8 +3,7 @@
 A pure JavaScript seesaw simulation where users can drop random-weight objects directly onto the plank and watch the system rebalance based on torque calculations.
 
 ## Live Demo
-- Demo URL: 
-- Repository URL: 
+- Demo URL: https://muhammedaydiiinn.github.io/seesaw-simulation-muhammed-aydin/
 
 ## Project Overview
 This project simulates a playground seesaw with a centered pivot.  
