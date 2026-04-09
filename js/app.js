@@ -4,8 +4,9 @@ import {
   setState,
   getSerializableState,
 } from "./state.js";
+import { CONFIG } from "./config.js";
 import { bindPlankClick } from "./events.js";
-import { renderObjects, renderRotation, renderStats } from "./render.js";
+import { renderObjects, renderRotation, renderStats, renderScale } from "./render.js";
 import { saveState, loadState, clearSavedState } from "./storage.js";
 
 const plankElement = document.getElementById("plank");
@@ -13,6 +14,7 @@ const objectsLayerElement = document.getElementById("objectsLayer");
 const leftWeightElement = document.getElementById("leftWeight");
 const rightWeightElement = document.getElementById("rightWeight");
 const angleValueElement = document.getElementById("angleValue");
+const scaleLayerElement = document.getElementById("scaleLayer");
 const resetButtonElement = document.getElementById("resetButton");
 const pauseButtonElement = document.getElementById("pauseButton");
 
@@ -56,6 +58,7 @@ function restoreState() {
 
 function initApp() {
   restoreState();
+  renderScale(scaleLayerElement, CONFIG.plankWidth);
   renderAll();
 
   bindPlankClick(plankElement, handleStateChange);

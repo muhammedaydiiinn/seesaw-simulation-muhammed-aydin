@@ -17,6 +17,9 @@ The seesaw recalculates its balance after each interaction and tilts according t
 - Left and right total weight display
 - Local storage persistence
 - Reset button
+- Pause/Resume button
+- Weight indicator on each object (scaled by weight)
+- Distance scale with tick marks on the plank
 - Responsive layout
 
 ## Physics Logic
